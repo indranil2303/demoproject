@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+@model TCSDemoProjectAlcoa.Models.Login
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="align-content-md-center">LOGIN</h4>
+        <hr />
+        <form asp-action="Login" asp-controller="Home" class="form-horizontal" method="post">
+            <div class="form-group col-md-8">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" aria-describedby="email" asp-for="email"
+                       placeholder="Enter your email">
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-8">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" aria-describedby="email" asp-for="password"
+                       placeholder="Enter your password">
+                <span asp-validation-for="password" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-8">
+                @*<input type="checkbox" class="form-check-input" asp-for="isremember">*@
+                @*<label class="form-check-label" for="isremember">Remember Me</label>*@
+
+                <button type="submit" class="btn btn-info col-sm-2">Login</button>
+                <a asp-action="Registration" asp-controller="Home"> Click here to register </a>
+            </div>
+
+            @*<div asp-validation-summary="All" class="text-danger"></div>*@
+            @if(!string.IsNullOrEmpty(ViewBag.Message)) {
+                <div class="alert alert-danger" role="alert">
+                    <b>@ViewBag.Message</b>
+                </div>
+            }
+        </form>
+    </div>
+</div>
